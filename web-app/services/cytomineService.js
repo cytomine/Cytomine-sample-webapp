@@ -10,10 +10,10 @@ angular.module("sampleApp")
         return {
 
             getPublicKey : function() {
-                return publicKey; //"29f51819-3dc6-468c-8aa7-9c81b9bc236b";
+                return publicKey;
             },
             getPrivateKey : function() {
-                return privateKey; //"db214699-0384-498c-823f-801654238a67";
+                return privateKey;
             },
 
             setKeys : function(publicK,privateK) {
