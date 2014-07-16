@@ -1,0 +1,25 @@
+angular.module("sampleApp")
+    .constant("projectUrl", "/api/project.json")
+    .config(function ($logProvider) {
+        $logProvider.debugEnabled(true);
+    })
+    .controller("mainCtrl", function ($scope, $http, $location,projectUrl) {
+        console.log("mainCtrl");
+        $scope.main = {error:{}};
+
+        $scope.getProject = function() {
+            $http.get(projectUrl)
+                .success(function (data) {
+                    console.log(data);
+                    $scope.main.project = data.collection;
+                })
+                .error(function (data, status, headers, config) {
+                    $scope.main.error.retrieve = {status:status,message:data.errors};
+                })
+        };
+        $scope.getProject();
+
+        $scope.throwEx = function() {
+            throw  { message: 'error occurred!' }
+        }
+    });

@@ -1,0 +1,21 @@
+<div class="panel-body" ng-controller="imageCtrl">
+
+    <div class="alert alert-danger" ng-show="image.error.retrieve">
+        Error. Cannot get image list. {{image.error.retrieve.message}} ({{image.error.retrieve.status}}).
+    </div>
+
+    <div ng-show="loading"><img class="img-responsive center-block" src="images/ajax-loader.gif"/></div>
+
+    <div>
+        This project has {{data.length}} images.
+    </div>
+    <div class="row" ng-hide="loading">
+        <div class="col-6 col-sm-6 col-lg-4" ng-repeat="item in data">
+            <h3>{{item.originalFilename}}</h3>
+            <p><img class="img-thumbnail" src="{{item.thumb}}"/></p>
+            <td data-title="'action'"  class="text-center">
+                <a class="btn btn-xs btn-primary" target="_blank" href="{{item.goToURL}}">Open in cytomine</a>
+            </td>
+        </div><!--/span-->
+    </div>
+</div>
